@@ -54,7 +54,7 @@ async function main() {
   }
 
   const submittedRecords = exists.map((record) => record.name);
-  const remaining = aRecords.filter((name) => !name.includes(submittedRecords));
+  const remaining = aRecords.filter((name) => !submittedRecords.includes(name));
 
   console.log("submittedRecords", submittedRecords);
   console.log("remaining", remaining);
