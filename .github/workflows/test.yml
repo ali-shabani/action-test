@@ -20,4 +20,5 @@ jobs:
       - name: running arvan
         run: node .github/scripts/arvan-dns.js
         env:
-          ARVAN_API_KEY: abc
+          DOMAIN: ${{ vars.DOMAIN }}
+          ARVAN_API_KEY: ${{ secrets.ARVAN_API_KEY }}
