@@ -1,0 +1,14 @@
+name: pull request
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: pull request name
+        run: echo ${{ github.head_ref }}
