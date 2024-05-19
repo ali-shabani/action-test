@@ -47,12 +47,17 @@ async function main() {
       record.value[0].ip !== SERVER_IP
   );
 
+  console.log("exists", exists);
+
   for (const record of exists) {
     await updateRecord(record);
   }
 
   const submittedRecords = exists.map((record) => record.name);
   const remaining = aRecords.filter((name) => !name.includes(submittedRecords));
+
+  console.log("submittedRecords", submittedRecords);
+  console.log("remaining", remaining);
 
   for (const name of remaining) {
     await createARecord(name);
