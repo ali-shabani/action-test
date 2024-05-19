@@ -2,6 +2,18 @@ const { DOMAIN, ARVAN_API_KEY, SERVER_IP } = process.env;
 
 const aRecords = ["app", "merchant", "moderation"];
 
+async function getRecords() {
+  return fetch(
+    `https://napi.arvancloud.ir/cdn/4.0/domains/${DOMAIN}/dns-records`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${ARVAN_API_KEY}`,
+      },
+    }
+  ).then((res) => res.json());
+}
+
 async function createARecord(name) {
   return fetch(
     `https://napi.arvancloud.ir/cdn/4.0/domains/${DOMAIN}/dns-records`,
@@ -32,22 +44,17 @@ async function updateRecord(record) {
       },
       method: "PUT",
       body: JSON.stringify({
+        name: record.name,
         value: [{ ip: SERVER_IP }],
+        type: "a",
+        ttl: 120,
       }),
     }
   );
 }
 
 async function main() {
-  const response = await fetch(
-    `https://napi.arvancloud.ir/cdn/4.0/domains/${DOMAIN}/dns-records`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${ARVAN_API_KEY}`,
-      },
-    }
-  ).then((res) => res.json());
+  const response = await getRecords();
 
   const exists = response.data.filter(
     (record) =>
@@ -69,11 +76,7 @@ async function main() {
   console.log("remaining", remaining);
 
   for (const name of remaining) {
-    try {
-      await createARecord(name);
-    } catch (e) {
-      console.log(e);
-    }
+    await createARecord(name);
   }
 }
 
