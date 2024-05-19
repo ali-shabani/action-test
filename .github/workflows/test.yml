@@ -19,3 +19,5 @@ jobs:
 
       - name: running arvan
         run: node .github/scripts/arvan-dns.js
+        env:
+          ARVAN_API_KEY: abc
