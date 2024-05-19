@@ -66,7 +66,11 @@ async function main() {
   console.log("remaining", remaining);
 
   for (const name of remaining) {
-    await createARecord(name);
+    try {
+      await createARecord(name);
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 
