@@ -42,7 +42,7 @@ async function main() {
 
   const exists = response.data.filter(
     (record) =>
-      record.type.toLowercase() === "a" &&
+      record.type.toLowerCase() === "a" &&
       aRecords.includes(record.name) &&
       record.value[0].ip !== SERVER_IP
   );
