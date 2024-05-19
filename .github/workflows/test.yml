@@ -17,8 +17,5 @@ jobs:
         with:
           node-version: "22"
 
-      - name: list files
-        run: ls -lash
-
-      - name: node version
-        run: node --version
+      - name: running arvan
+        run: node .github/scripts/arvan-dns.js
