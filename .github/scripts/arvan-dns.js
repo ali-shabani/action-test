@@ -6,6 +6,9 @@ async function createARecord(name) {
   return fetch(
     `https://napi.arvancloud.ir/cdn/4.0/domains/${DOMAIN}/dns-records`,
     {
+      headers: {
+        Authorization: `${ARVAN_API_KEY}`,
+      },
       method: "POST",
       body: JSON.stringify({
         name,
@@ -22,6 +25,9 @@ async function updateRecord(record) {
   return fetch(
     `https://napi.arvancloud.ir/cdn/4.0/domains/${DOMAIN}/dns-records/${record.id}`,
     {
+      headers: {
+        Authorization: `${ARVAN_API_KEY}`,
+      },
       method: "PUT",
       body: JSON.stringify({
         value: [{ ip: SERVER_IP }],
