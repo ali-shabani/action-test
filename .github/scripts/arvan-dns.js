@@ -7,6 +7,7 @@ async function createARecord(name) {
     `https://napi.arvancloud.ir/cdn/4.0/domains/${DOMAIN}/dns-records`,
     {
       headers: {
+        "Content-Type": "application/json",
         Authorization: `${ARVAN_API_KEY}`,
       },
       method: "POST",
@@ -26,6 +27,7 @@ async function updateRecord(record) {
     `https://napi.arvancloud.ir/cdn/4.0/domains/${DOMAIN}/dns-records/${record.id}`,
     {
       headers: {
+        "Content-Type": "application/json",
         Authorization: `${ARVAN_API_KEY}`,
       },
       method: "PUT",
@@ -41,6 +43,7 @@ async function main() {
     `https://napi.arvancloud.ir/cdn/4.0/domains/${DOMAIN}/dns-records`,
     {
       headers: {
+        "Content-Type": "application/json",
         Authorization: `${ARVAN_API_KEY}`,
       },
     }
