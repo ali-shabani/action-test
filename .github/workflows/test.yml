@@ -22,4 +22,4 @@ jobs:
         env:
           DOMAIN: ${{ vars.DOMAIN }}
           ARVAN_API_KEY: ${{ secrets.ARVAN_API_KEY }}
-          SERVER_IP: "1.1.1.1"
+          SERVER_IP: "1.1.1.2"
